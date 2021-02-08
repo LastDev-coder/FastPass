@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278109078963",
+    "project_id": "safe-passwords-7df81",
+    "storage_bucket": "safe-passwords-7df81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278109078963:android:158a5a8892cf9fcb70f7c6",
+        "android_client_info": {
+          "package_name": "password.manager.password_manager_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278109078963-je8bo8ohbe5462291mh12a7grsjaomi6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp5jFiHMzvLj2TsJYSoqylyNv-TUbRUhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278109078963-je8bo8ohbe5462291mh12a7grsjaomi6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
