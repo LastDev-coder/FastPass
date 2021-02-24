@@ -2,10 +2,12 @@ import 'package:adobe_xd/pinned.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:password_manager_project/Forgot_Password.dart';
 import 'package:password_manager_project/SignUp.dart';
-
+import 'package:flutter_statusbar_text_color/flutter_statusbar_text_color.dart';
 import 'home.dart';
 
 class Login extends StatefulWidget {
@@ -127,10 +129,14 @@ class _Login extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+// FlutterStatusbarTextColor.setTextColor();
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: const Color(0xffffffff),
+
       body: Form(
+
         key: formkey,
         child: Stack(
           children: <Widget>[
@@ -150,11 +156,10 @@ class _Login extends State<Login> {
                     fixedHeight: true,
                     child: Text(
                       'Don\'t have any account ?',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontSize: 15,
-                        color: const Color(0xff263238),
-                      ),
+                      style: GoogleFonts.montserrat(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black54),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -199,7 +204,7 @@ class _Login extends State<Login> {
               ),
             ),
             Pinned.fromSize(
-              bounds: Rect.fromLTWH(31.0, 40.0, 350.0, 600.0),
+              bounds: Rect.fromLTWH(31.0, 50.0, 350.0, 600.0),
               size: Size(412.0, 847.0),
               pinLeft: true,
               pinRight: true,
@@ -313,11 +318,10 @@ class _Login extends State<Login> {
                     fixedHeight: true,
                     child: Text(
                       'Please login in your personal  account.',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontSize: 17,
-                        color: const Color(0xff2f2e41),
-                      ),
+                      style: GoogleFonts.montserrat(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black54),
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -330,12 +334,10 @@ class _Login extends State<Login> {
                     fixedHeight: true,
                     child: Text(
                       'Sign In',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontSize: 30,
-                        color: const Color(0xff2f2e41),
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: GoogleFonts.montserrat(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87),
                       textAlign: TextAlign.left,
                     ),
                   ),

@@ -7,7 +7,21 @@ packages:
       name: adobe_xd
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0+1"
+    version: "1.1.0+1"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.13"
+  args:
+    dependency: transitive
+    description:
+      name: args
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.6.0"
   async:
     dependency: transitive
     description:
@@ -188,6 +202,27 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_launcher_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.1"
+  flutter_launcher_name:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_name
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
+  flutter_statusbar_text_color:
+    dependency: "direct main"
+    description:
+      name: flutter_statusbar_text_color
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   flutter_statusbarcolor:
     dependency: "direct main"
     description:
@@ -201,7 +236,7 @@ packages:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.18.1"
+    version: "0.19.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -218,14 +253,14 @@ packages:
       name: fluttertoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.1.6"
+    version: "7.1.8"
   google_fonts:
     dependency: "direct main"
     description:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   http:
     dependency: transitive
     description:
@@ -240,6 +275,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+  image:
+    dependency: transitive
+    description:
+      name: image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.19"
   intl:
     dependency: transitive
     description:
@@ -433,7 +475,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.7.4"
+    version: "1.7.4+1"
   xdg_directories:
     dependency: transitive
     description:
@@ -448,6 +490,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.5.1"
+  yaml:
+    dependency: transitive
+    description:
+      name: yaml
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.1"
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
   flutter: ">=1.18.0-6.0.pre <2.0.0"

@@ -1,5 +1,3 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 import 'Add_Password.dart';
 
@@ -68,28 +67,32 @@ class _home extends State<home> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+
     return Scaffold(
       appBar: AppBar(
         // syatemOverlayStyle : SystemUiOverlayStyle(statusBarColor: Colors.white);
         elevation: 0,
-        title: Text('App'),
+        title: Text('FastPass'),
 
         backgroundColor: Colors.white,
         brightness: Brightness.light,
       ),
       drawer: Drawer(
         child: Container(
+          color: Colors.white70,
           child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
               UserAccountsDrawerHeader(
                 accountEmail: Text(user.email),
-                currentAccountPicture: CircleAvatar(
-                    // backgroundColor: Colors.deepPurple,
-                    child: Image(
-                  image: NetworkImage(user.photoURL.toString()),
-                )),
+                currentAccountPicture: Image.asset(
+                  "assets/images/protect.png",
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.fill,
+                ),
               ),
               Divider(),
               ListTile(
@@ -135,21 +138,63 @@ class _home extends State<home> {
                                   splashColor: Colors.blue[100],
                                   onLongPress: () {
                                     Widget cancelButton = FlatButton(
-                                      child: Text("Cancel"),
-                                      onPressed: () {},
+                                      child: Text(
+                                        "Cancel",
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.green),
+                                      ),
+                                      onPressed: () => Navigator.pop(
+                                          context, false), // passing false
                                     );
                                     Widget continueButton = FlatButton(
-                                      child: Text("Continue"),
-                                      onPressed: ()  {
+                                      child: Text(
+                                        "Delete",
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.red),
+                                      ),
+                                      onPressed: () async {
+                                        CollectionReference users =
+                                            FirebaseFirestore.instance
+                                                .collection(user.uid);
 
+                                        Future<void> deleteUser() {
+                                          return users
+                                              .doc(documentSnapshot["password"])
+                                              .delete()
+                                              .then((value) =>
+                                                  print("User Deleted"))
+                                              .catchError((error) => print(
+                                                  "Failed to delete user: $error"));
+                                        }
+
+                                        deleteUser();
+
+                                        Navigator.pop(
+                                            context, false); // passing false
                                       },
                                     );
 
                                     // set up the AlertDialog
                                     AlertDialog alert = AlertDialog(
-                                      title: Text("Delete Password!"),
+                                      backgroundColor: Colors.white,
+                                      title: Text(
+                                        "Delete Password!",
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black87),
+                                      ),
                                       content: Text(
-                                          "Would you like to delete your password ?"),
+                                        "Would you like to delete your username and password ?",
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black54),
+                                      ),
                                       actions: [
                                         cancelButton,
                                         continueButton,

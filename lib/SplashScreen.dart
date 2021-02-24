@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:password_manager_project/Login.dart';
 
@@ -25,9 +26,9 @@ class _SplashScreen extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: FlutterLogo(
-          size: 300,
-        ),
+        child: Image.asset('assets/images/protect.png',
+        width: 250,
+        height: 250,)
       ),
     );
   }

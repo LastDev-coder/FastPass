@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'home.dart';
+
 class add_password extends StatefulWidget {
   const add_password({Key key}) : super(key: key);
 
@@ -26,18 +28,36 @@ class _add_password extends State<add_password> {
 
   static const _chars =
       'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890!@#%^&*)_+{}[]/*-+/,=';
-  
+  static const _digit =
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+
+  static const _spc = '1234567890!@#%^&*)_+{}[]/*-+/,=';
+
+  static const _exta =
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890!@#%^&*)_+{}[]/*-+/,=';
+
   String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
- 
+  String getRandomDigit(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _digit.codeUnitAt(_rnd.nextInt(_digit.length))));
+
+  String getRandomSpc(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _spc.codeUnitAt(_rnd.nextInt(_spc.length))));
+
+  String getRandomExta(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _exta.codeUnitAt(_rnd.nextInt(_exta.length))));
+
   Future<void> _addData() async {
     formkey.currentState.validate();
   }
 
   getPassword() {
     setState(() {
-      result = getRandomString(16);
+      result = getRandomString(4) +
+          getRandomDigit(4) +
+          getRandomSpc(4) +
+          getRandomExta(4);
     });
     return result;
   }
@@ -70,11 +90,20 @@ class _add_password extends State<add_password> {
         final FirebaseAuth auth = FirebaseAuth.instance;
         final User user = auth.currentUser;
         final uid = user.uid;
-        FirebaseFirestore.instance
-            .collection(uid)
-            .add({'Field': field, 'name': username, 'password': result});
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => home()));
+
+        CollectionReference users = FirebaseFirestore.instance.collection(uid);
+
+        Future<void> addPassword() {
+          return users
+              .doc(result)
+              .set({'Field': field, 'name': username, 'password': result})
+              .then((value) => print("User Added"))
+              .catchError((error) => print("Failed to add user: $error"));
+        }
+
+        addPassword();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => home()));
       }
     }
   }
@@ -89,7 +118,7 @@ class _add_password extends State<add_password> {
         child: Stack(
           children: <Widget>[
             Pinned.fromSize(
-              bounds: Rect.fromLTWH(31.0, 30.0, 350.0, 552.0),
+              bounds: Rect.fromLTWH(31.0, 60.0, 350.0, 552.0),
               size: Size(412.0, 847.0),
               pinLeft: true,
               pinRight: true,

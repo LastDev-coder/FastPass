@@ -36,7 +36,10 @@ dependencies:
   flutter_statusbarcolor: ^0.2.3
   clipboard_manager: ^0.0.4
   google_fonts: ^1.1.1
+  flutter_statusbar_text_color: ^0.1.2
+  flutter_launcher_icons: ^0.8.1
 
+  flutter_launcher_name: ^0.0.1
 
   carousel_slider: ^1.3.0
 
@@ -44,6 +47,14 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
+
+flutter_icons:
+  image_path: "assets/images/protect.png"
+  android: true
+  ios: true
+flutter_launcher_name:
+  name: "FastPass"
+
 
 dev_dependencies:
   
